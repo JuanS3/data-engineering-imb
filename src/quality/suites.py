@@ -171,8 +171,8 @@ def expectativas_customers() -> list:
         ),
         gx.expectations.ExpectColumnValuesToBeBetween(
             column="annual_income",
-            min_value=0,
-            max_value=1_000_000,
+            min_value=10,
+            max_value=1_000,
             mostly=MOSTLY,
             severity="critical",
             description="Exactitud: ingreso anual fuera de rango bloquea a >1%.",

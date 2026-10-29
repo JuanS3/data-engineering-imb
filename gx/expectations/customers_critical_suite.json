@@ -142,19 +142,6 @@
       "type": "expect_column_values_to_be_between"
     },
     {
-      "description": "Exactitud: ingreso anual fuera de rango bloquea a >1%.",
-      "id": "71a52279-e8cd-464e-85f7-dcc0a6777c76",
-      "kwargs": {
-        "column": "annual_income",
-        "max_value": 1000000.0,
-        "min_value": 0.0,
-        "mostly": 0.99
-      },
-      "meta": {},
-      "severity": "critical",
-      "type": "expect_column_values_to_be_between"
-    },
-    {
       "description": "Exactitud: score de cr\u00e9dito fuera del dominio bloquea a >1%.",
       "id": "2e987ade-1cbf-461e-b8c5-b8c2c9f7a7e0",
       "kwargs": {
@@ -178,6 +165,19 @@
       "meta": {},
       "severity": "critical",
       "type": "expect_column_values_to_match_regex"
+    },
+    {
+      "description": "Exactitud: ingreso anual fuera de rango bloquea a >1%.",
+      "id": "f8151764-3c65-443e-8842-343ca96b921b",
+      "kwargs": {
+        "column": "annual_income",
+        "max_value": 1000.0,
+        "min_value": 10.0,
+        "mostly": 0.99
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
     }
   ],
   "id": "ba09e489-2d3f-473c-b648-374c12ed6b7b",
