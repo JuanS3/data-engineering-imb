@@ -1,0 +1,396 @@
+{
+  "expectations": [
+    {
+      "description": "Contrato: las 25 columnas acordadas del dataset de \u00f3rdenes.",
+      "id": "5818f36f-9c4d-4c70-84cd-fe89c6fb47b9",
+      "kwargs": {
+        "column_set": [
+          "order_id",
+          "customer_id",
+          "customer_country",
+          "customer_currency",
+          "customer_registration_date",
+          "order_date",
+          "product_category",
+          "product_name",
+          "unit_price",
+          "quantity",
+          "subtotal",
+          "discount_percent",
+          "discount_amount",
+          "tax_rate",
+          "tax_amount",
+          "shipping_method",
+          "shipping_cost",
+          "shipping_date",
+          "delivery_date",
+          "delivery_days",
+          "payment_method",
+          "total_amount",
+          "order_status",
+          "is_returned",
+          "return_date"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_table_columns_to_match_set"
+    },
+    {
+      "description": "Volumen: al menos 100 \u00f3rdenes en la carga.",
+      "id": "9f86542c-282c-440a-822a-46b2e181d624",
+      "kwargs": {
+        "max_value": 1000000,
+        "min_value": 100
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_table_row_count_to_be_between"
+    },
+    {
+      "description": "Unicidad: order_id es la clave natural de la orden.",
+      "id": "854ad9c1-4976-4528-8b0d-8e42a39b0dea",
+      "kwargs": {
+        "column": "order_id"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_unique"
+    },
+    {
+      "description": "Completitud: la clave no puede ser nula.",
+      "id": "ca56dcd3-4d7e-43e1-9787-4545d2dbfa46",
+      "kwargs": {
+        "column": "order_id"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "description": "Completitud: toda orden pertenece a un cliente.",
+      "id": "cc0350a8-7b6d-4a40-8b86-ca84f50c0473",
+      "kwargs": {
+        "column": "customer_id"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "description": "Referencial: el cliente de la orden debe existir en el pool (tolerancia 1%).",
+      "id": "a70d592b-8648-4485-b245-b88c2d1a6188",
+      "kwargs": {
+        "column": "customer_id",
+        "mostly": 0.99,
+        "value_set": [
+          "CUST-00000",
+          "CUST-00001",
+          "CUST-00002",
+          "CUST-00003",
+          "CUST-00004",
+          "CUST-00005",
+          "CUST-00006",
+          "CUST-00007",
+          "CUST-00008",
+          "CUST-00009",
+          "CUST-00010",
+          "CUST-00011",
+          "CUST-00012",
+          "CUST-00013",
+          "CUST-00014",
+          "CUST-00015",
+          "CUST-00016",
+          "CUST-00017",
+          "CUST-00018",
+          "CUST-00019",
+          "CUST-00020",
+          "CUST-00021",
+          "CUST-00022",
+          "CUST-00023",
+          "CUST-00024",
+          "CUST-00025",
+          "CUST-00026",
+          "CUST-00027",
+          "CUST-00028",
+          "CUST-00029",
+          "CUST-00030",
+          "CUST-00031",
+          "CUST-00032",
+          "CUST-00033",
+          "CUST-00034",
+          "CUST-00035",
+          "CUST-00036",
+          "CUST-00037",
+          "CUST-00038",
+          "CUST-00039",
+          "CUST-00040",
+          "CUST-00041",
+          "CUST-00042",
+          "CUST-00043",
+          "CUST-00044",
+          "CUST-00045",
+          "CUST-00046",
+          "CUST-00047",
+          "CUST-00048",
+          "CUST-00049",
+          "CUST-00050",
+          "CUST-00051",
+          "CUST-00052",
+          "CUST-00053",
+          "CUST-00054",
+          "CUST-00055",
+          "CUST-00056",
+          "CUST-00057",
+          "CUST-00058",
+          "CUST-00059",
+          "CUST-00060",
+          "CUST-00061",
+          "CUST-00062",
+          "CUST-00063",
+          "CUST-00064",
+          "CUST-00065",
+          "CUST-00066",
+          "CUST-00067",
+          "CUST-00068",
+          "CUST-00069",
+          "CUST-00070",
+          "CUST-00071",
+          "CUST-00072",
+          "CUST-00073",
+          "CUST-00074",
+          "CUST-00075",
+          "CUST-00076",
+          "CUST-00077",
+          "CUST-00078",
+          "CUST-00079",
+          "CUST-00080",
+          "CUST-00081",
+          "CUST-00082",
+          "CUST-00083",
+          "CUST-00084",
+          "CUST-00085",
+          "CUST-00086",
+          "CUST-00087",
+          "CUST-00088",
+          "CUST-00089",
+          "CUST-00090",
+          "CUST-00091",
+          "CUST-00092",
+          "CUST-00093",
+          "CUST-00094",
+          "CUST-00095",
+          "CUST-00096",
+          "CUST-00097",
+          "CUST-00098",
+          "CUST-00099"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_in_set"
+    },
+    {
+      "description": "Temporal: fecha de compra obligatoria (>1% nula bloquea).",
+      "id": "6fa2a80d-982e-4fb8-b811-c8a788d007df",
+      "kwargs": {
+        "column": "order_date",
+        "mostly": 0.99
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "description": "Temporal: fecha de env\u00edo obligatoria (>1% nula bloquea).",
+      "id": "1e4ab471-21e1-46d2-9d40-58ea3bdcf963",
+      "kwargs": {
+        "column": "shipping_date",
+        "mostly": 0.99
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "description": "Temporal: no se compra antes de registrarse.",
+      "id": "ae2f45ba-a186-4db1-8f16-b35d9f0a42b3",
+      "kwargs": {
+        "column_A": "order_date",
+        "column_B": "customer_registration_date",
+        "mostly": 0.97,
+        "or_equal": true
+      },
+      "meta": {},
+      "severity": "info",
+      "type": "expect_column_pair_values_a_to_be_greater_than_b"
+    },
+    {
+      "description": "Temporal: la entrega no precede al env\u00edo.",
+      "id": "36861892-244f-49d4-8a32-183e0c2f84da",
+      "kwargs": {
+        "column_A": "delivery_date",
+        "column_B": "shipping_date",
+        "mostly": 0.97,
+        "or_equal": true
+      },
+      "meta": {},
+      "severity": "info",
+      "type": "expect_column_pair_values_a_to_be_greater_than_b"
+    },
+    {
+      "description": "Negocio: cantidad vendida entre 1 y 5 unidades.",
+      "id": "649c9255-c3b2-4557-9eb2-6bccda06c2e2",
+      "kwargs": {
+        "column": "quantity",
+        "max_value": 5.0,
+        "min_value": 1.0,
+        "mostly": 0.97
+      },
+      "meta": {},
+      "severity": "info",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "description": "Negocio: precio unitario positivo.",
+      "id": "5852d170-9aee-4647-a840-3348e41bc0d6",
+      "kwargs": {
+        "column": "unit_price",
+        "max_value": 100000.0,
+        "min_value": 0.01,
+        "mostly": 0.97
+      },
+      "meta": {},
+      "severity": "info",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "description": "Negocio: descuento entre 0% y 100%.",
+      "id": "cc312a46-e2ad-437e-8732-882aa4ccf338",
+      "kwargs": {
+        "column": "discount_percent",
+        "max_value": 100.0,
+        "min_value": 0.0,
+        "mostly": 0.97
+      },
+      "meta": {},
+      "severity": "info",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "description": "Negocio: el descuento no puede superar el subtotal (>1% bloquea).",
+      "id": "9d3a6853-0ca0-4540-af72-a01da5c3c06d",
+      "kwargs": {
+        "column_A": "subtotal",
+        "column_B": "discount_amount",
+        "mostly": 0.99,
+        "or_equal": true
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_pair_values_a_to_be_greater_than_b"
+    },
+    {
+      "description": "Negocio: total no negativo ni astron\u00f3mico.",
+      "id": "69270807-724e-4ba5-a2bb-18123bf58e68",
+      "kwargs": {
+        "column": "total_amount",
+        "max_value": 10000000.0,
+        "min_value": 0.0,
+        "mostly": 0.97
+      },
+      "meta": {},
+      "severity": "info",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "description": "Negocio: duraci\u00f3n de entrega plausible (0 a 30 d\u00edas).",
+      "id": "734dbb60-7686-4486-b885-eb83d8821c97",
+      "kwargs": {
+        "column": "delivery_days",
+        "max_value": 30.0,
+        "min_value": 0.0,
+        "mostly": 0.97
+      },
+      "meta": {},
+      "severity": "info",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "description": "Dominio: categor\u00eda de producto v\u00e1lida.",
+      "id": "90866bc6-65e4-4af3-abf4-263e67d0b92b",
+      "kwargs": {
+        "column": "product_category",
+        "value_set": [
+          "ELECTRONICS",
+          "CLOTHING",
+          "HOME",
+          "BOOKS",
+          "SPORTS"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_in_set"
+    },
+    {
+      "description": "Dominio: m\u00e9todo de pago v\u00e1lido.",
+      "id": "808cec97-86c7-4f3b-8529-33a57924e846",
+      "kwargs": {
+        "column": "payment_method",
+        "value_set": [
+          "CREDIT_CARD",
+          "DEBIT_CARD",
+          "PAYPAL",
+          "BANK_TRANSFER",
+          "CASH_ON_DELIVERY",
+          "CRYPTO"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_in_set"
+    },
+    {
+      "description": "Dominio: m\u00e9todo de env\u00edo v\u00e1lido.",
+      "id": "7c70c459-c8d7-4ead-b592-8a04e182b68a",
+      "kwargs": {
+        "column": "shipping_method",
+        "value_set": [
+          "STANDARD",
+          "EXPRESS",
+          "SAME_DAY",
+          "ECONOMIC"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_in_set"
+    },
+    {
+      "description": "Dominio: estado de la orden v\u00e1lido.",
+      "id": "488a31d0-393e-4f99-9fad-2e9e8f5c279d",
+      "kwargs": {
+        "column": "order_status",
+        "value_set": [
+          "PENDING",
+          "PROCESSING",
+          "SHIPPED",
+          "IN_TRANSIT",
+          "DELIVERED",
+          "CANCELLED",
+          "REFUNDED"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_in_set"
+    }
+  ],
+  "id": "b0ace37c-2055-4f17-a57f-3bafaa8e55a8",
+  "meta": {
+    "great_expectations_version": "1.24.1"
+  },
+  "name": "orders_critical_suite",
+  "notes": null
+}

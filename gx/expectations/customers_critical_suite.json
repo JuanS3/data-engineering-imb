@@ -1,0 +1,189 @@
+{
+  "expectations": [
+    {
+      "description": "Contrato: las 12 columnas acordadas, ni m\u00e1s ni menos.",
+      "id": "d05417ab-0844-459c-b748-5cc4253e5b6a",
+      "kwargs": {
+        "column_set": [
+          "customer_id",
+          "first_name",
+          "last_name",
+          "email",
+          "age",
+          "birth_date",
+          "country",
+          "city",
+          "annual_income",
+          "credit_score",
+          "registration_date",
+          "last_update"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_table_columns_to_match_set"
+    },
+    {
+      "description": "Volumen: al menos 100 clientes en la carga.",
+      "id": "98ed6a90-3f74-48d5-904c-b788fcebfdc4",
+      "kwargs": {
+        "max_value": 1000000,
+        "min_value": 100
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_table_row_count_to_be_between"
+    },
+    {
+      "description": "Unicidad: customer_id es la clave natural.",
+      "id": "8b4fba79-daa4-4a42-b336-a245e539b7da",
+      "kwargs": {
+        "column": "customer_id"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_unique"
+    },
+    {
+      "description": "Completitud: la clave no puede ser nula.",
+      "id": "8219905f-5364-4d7b-a59b-a22a31bffead",
+      "kwargs": {
+        "column": "customer_id"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "description": "Completitud: email nulo bloquea si supera 1%.",
+      "id": "2ccdf960-fc86-4b90-9889-0457300dc85b",
+      "kwargs": {
+        "column": "email",
+        "mostly": 0.99
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "description": "Completitud: edad nula bloquea si supera 1%.",
+      "id": "6538615f-048e-4a52-b256-c9d9e13b397a",
+      "kwargs": {
+        "column": "age",
+        "mostly": 0.99
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "description": "Validez: formato de email razonable.",
+      "id": "1fbade69-4738-4c3d-8851-14b47a2ac08e",
+      "kwargs": {
+        "column": "email",
+        "mostly": 0.97,
+        "regex": "^[\\w.+-]+@[\\w-]+\\.[\\w.-]+$"
+      },
+      "meta": {},
+      "severity": "info",
+      "type": "expect_column_values_to_match_regex"
+    },
+    {
+      "description": "Validez: birth_date es una fecha parseable.",
+      "id": "8acb642d-5c85-4bc2-b6d3-cd340a68a235",
+      "kwargs": {
+        "column": "birth_date",
+        "mostly": 0.97
+      },
+      "meta": {},
+      "severity": "info",
+      "type": "expect_column_values_to_be_dateutil_parseable"
+    },
+    {
+      "description": "Validez: registration_date en formato ISO.",
+      "id": "6fae43a2-d192-4664-9147-d1944259429d",
+      "kwargs": {
+        "column": "registration_date",
+        "mostly": 0.97,
+        "regex": "^\\d{4}-\\d{2}-\\d{2}$"
+      },
+      "meta": {},
+      "severity": "info",
+      "type": "expect_column_values_to_match_regex"
+    },
+    {
+      "description": "Validez: pa\u00eds dentro del dominio de negocio.",
+      "id": "528a119e-ba7d-4404-8e9d-fe6c1fcb3110",
+      "kwargs": {
+        "column": "country",
+        "value_set": [
+          "M\u00e9xico",
+          "Espa\u00f1a",
+          "Argentina",
+          "Colombia",
+          "Chile"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_in_set"
+    },
+    {
+      "description": "Exactitud: edad dentro del rango plausible.",
+      "id": "b68331f2-9d58-4b44-911c-e894ced2c71f",
+      "kwargs": {
+        "column": "age",
+        "max_value": 85.0,
+        "min_value": 18.0,
+        "mostly": 0.97
+      },
+      "meta": {},
+      "severity": "info",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "description": "Exactitud: ingreso anual fuera de rango bloquea a >1%.",
+      "id": "71a52279-e8cd-464e-85f7-dcc0a6777c76",
+      "kwargs": {
+        "column": "annual_income",
+        "max_value": 1000000.0,
+        "min_value": 0.0,
+        "mostly": 0.99
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "description": "Exactitud: score de cr\u00e9dito fuera del dominio bloquea a >1%.",
+      "id": "2e987ade-1cbf-461e-b8c5-b8c2c9f7a7e0",
+      "kwargs": {
+        "column": "credit_score",
+        "max_value": 850.0,
+        "min_value": 300.0,
+        "mostly": 0.99
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "description": "Oportunidad: registros con datos de 2019 o anteriores bloquean a >1%.",
+      "id": "d30b73d1-2bdc-4e24-bf27-752b850c1455",
+      "kwargs": {
+        "column": "last_update",
+        "mostly": 0.99,
+        "regex": "^202[0-9]-"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_match_regex"
+    }
+  ],
+  "id": "ba09e489-2d3f-473c-b648-374c12ed6b7b",
+  "meta": {
+    "great_expectations_version": "1.24.1"
+  },
+  "name": "customers_critical_suite",
+  "notes": null
+}
